@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Search Results</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <style>
+            .header{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+                background-color:aliceblue;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: 10px;
+                margin-bottom: 5px;
+                border: 3px solid;
+                border-radius: 6px;
+                padding: 50px;
+            }
+            body{
+                background-color:#66CCFF;
+            }
+            a:link {
+                color: black;
+                text-decoration: none;
+            }
+            a:visited {
+                color: black;
+                text-decoration: none;
+            }
+            a:active {
+                color: black;
+                text-decoration: none;
+            }
+            a:hover {
+                color: red;
+                text-decoration: underline;
+            }
+            .container{
+                padding-left: 100px;
+                padding-right: 100px;
+                padding-top: 40px;
+                padding-bottom: 50px;
+                border: 3px solid;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                background-color:aliceblue;
+                border-radius: 20px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+            } 
+            .header-contents{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+                text-align: center;
+            }
+            input[type="text"],[type="password"],[type="search"]{
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+            }
+            button {
+                background-color: #1e25b0;
+                display:block;
+                width:80px;
+                height:80px;
+                line-height:80px;
+                border: 2px solid #f5f5f5;
+                border-radius: 50%;
+                color:#f5f5f5;
+                text-align:center;
+                text-decoration:none;
+                box-shadow: 0 0 3px gray;
+                font-size:20px;
+                font-weight:bold;
+                margin: 0;
+                align
+            }
+            .following{
+                border-left:6px solid gray;
+                padding-left:50px;
+            }
+        </style>
+    <head>
+    <body>
+        <div class="header">
+            <b style="float:left"><a href="/{{ users["username"] }}/home" formaction='/{{ users["username"] }}/home' formmethod='GET'>WELCOME {{ users["first_name"] }},</a></b><b style="float:right"><a href="/{{ users["username"] }}/search" formaction="/{{ users["username"] }}/search" formmethod='GET'>SEARCH</a> | <a href="/{{ users["username"] }}/my_profile" formaction="/{{ users["username"] }}/my_profile" formmethod="GET">MY PROFILE</a> | <a href='/' formaction='/' formmethod='GET'>LOG OUT</a></b>
+        </div>
+        <br>
+        <div class="container"> 
+            <div class="result"> 
+                <ul>
+                {% for item in results %}
+                        <li><a href="/{{ users["username"] }}/profile/{{ item }}" formaction="/{{ users["username"] }}/profile/{{ item }}" formmethod="GET"><b style="float:left">{{ item }}</b></a>
+                            <b style="float:right">
+                            {% if item  not in follow %}
+                                <a href="/{{ users["username"] }}/follow/{{ item }}" formaction="/{{ users["username"] }}/follow/{{ item }}" formmethod='GET'>Follow</a></b>
+                            {% else %}
+                                <a href="/{{ users["username"] }}/unfollow/{{ item }}" formaction="/{{ users["username"] }}/unfollow/{{ item }}" formmethod='GET'>Unfollow</a></b>
+                            {% endif %}
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

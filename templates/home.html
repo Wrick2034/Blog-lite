@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <style>
+            .header{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+                background-color:aliceblue;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: 10px;
+                margin-bottom: 5px;
+                border: 3px solid;
+                border-radius: 6px;
+                padding: 50px;
+            }
+            body{
+                background-color:#66CCFF;
+            }
+            a:link {
+                color: black;
+                text-decoration: none;
+            }
+            a:visited {
+                color: black;
+                text-decoration: none;
+            }
+            a:active {
+                color: black;
+                text-decoration: none;
+            }
+            a:hover {
+                color: red;
+                text-decoration: underline;
+            }
+            a:hover[class="float"] {
+                color: white;
+                text-decoration: none;
+            }
+
+            .container{
+                padding-left: 100px;
+                padding-right: 100px;
+                padding-top: 40px;
+                padding-bottom: 50px;
+                border: 3px solid;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                background-color:aliceblue;
+                border-radius: 20px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+            } 
+            .header-contents{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+                text-align: center;
+            }
+            input[type="text"],[type="password"]{
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+            }
+            button {
+                background-color: #1e25b0;
+                display:block;
+                width:80px;
+                height:80px;
+                line-height:80px;
+                border: 2px solid #f5f5f5;
+                border-radius: 50%;
+                color:#f5f5f5;
+                text-align:center;
+                text-decoration:none;
+                box-shadow: 0 0 3px gray;
+                font-size:20px;
+                font-weight:bold;
+                margin: 0;
+                align
+            }
+            .post{
+                font-size:30px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                border: 3px solid;
+                border-radius: 6px;
+                background-color:aliceblue;
+                text-align:center;
+            }
+            .posts{
+                display:flex;
+                flex-direction:column-reverse;
+            } 
+            .float{
+                position:fixed;
+                width:70px;
+                height:70px;
+                bottom:40px;
+                right:40px;
+                background-color:#0C9;
+                color:#FFFFFF;
+                border-radius:50px;
+                text-align:center;
+                box-shadow: 2px 2px 3px #999;
+            }
+            
+            .my-float{
+                margin-top:22px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 52px;
+
+            }
+        </style>
+    <head>
+    <body>
+        <div class="header">
+            <b style="float:left">WELCOME {{ users["first_name"] }},</b>
+            <b style="float:right"><a href="/{{ users["username"] }}/search" formaction='/{{ users["username"] }}/search' formmethod='GET'>SEARCH</a> | <a href="/{{ users["username"] }}/my_profile" formaction='/{{ users["username"] }}/my_profile' formmethod='GET'>MY PROFILE</a> | <a href='/' formaction='/' formmethod='GET'>LOG OUT</a></b>
+        </div>
+        <br>
+        <div class="posts">
+            {% for post in posts %}
+                {% if post["username"] in follow %}
+                    <div class="post">
+                        <a href="/{{ users["username"] }}/profile/{{ post["username"] }}" formaction="/{{ users["username"] }}/profile/{{ post["username"] }}" formmethod="GET"><p style="font-size:17px" align="left">{{ post["username"] }}</a> posted :</p>
+                        <b>{{ post["title"] }}</b>
+                        <br>
+                        <p font-size="30px">{{ post["description"] }}</p>
+                        <p style="font-size:16px" align="right">{{ post["datetime"] }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <a href="/{{ users["username"] }}/new_post" class="float" >
+            <i class="my-float">+</i>
+        </a>
+    </body>
+</html>

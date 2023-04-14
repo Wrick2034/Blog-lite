@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Summary</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <style>
+            .header{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+                background-color:aliceblue;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: 10px;
+                margin-bottom: 5px;
+                border: 3px solid;
+                border-radius: 6px;
+                padding: 50px;
+            }
+            body{
+                background-color:#66CCFF;
+            }
+            a:link {
+                color: black;
+                text-decoration: none;
+            }
+            a:visited {
+                color: black;
+                text-decoration: none;
+            }
+            a:active {
+                color: black;
+                text-decoration: none;
+            }
+            a:hover {
+                color: red;
+                text-decoration: underline;
+            }
+            a:hover[class="float"] {
+                color: white;
+                text-decoration: none;
+            }
+            .user_info{
+                display:flex;
+                justify-content:space-evenly;
+                flex-grow:2;
+
+            } 
+            .posts{
+                display:flex;
+                flex-direction:column-reverse;
+            } 
+            .post{
+                font-size:30px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                border: 3px solid;
+                border-radius: 6px;
+                background-color:aliceblue;
+                text-align:center;
+            }
+            div[name="followers"],div[name="following"],div[name="total_posts"]{
+                font-size:30px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+            }
+            .header-contents{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+                text-align: center;
+            }
+            input[type="text"],[type="password"]{
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+            }
+            button {
+                background-color: #1e25b0;
+                display:block;
+                width:80px;
+                height:80px;
+                line-height:80px;
+                border: 2px solid #f5f5f5;
+                border-radius: 50%;
+                color:#f5f5f5;
+                text-align:center;
+                text-decoration:none;
+                box-shadow: 0 0 3px gray;
+                font-size:20px;
+                font-weight:bold;
+                margin: 0;
+                align
+            }
+            img{
+                margin:20px 0px;
+                border-radius:50%;
+                height:130px;
+                width:130px;
+            }
+            p{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size:30px;
+            }
+            .float{
+                position:fixed;
+                width:70px;
+                height:70px;
+                bottom:40px;
+                right:40px;
+                background-color:#0C9;
+                color:#FFFFFF;
+                border-radius:50px;
+                text-align:center;
+                box-shadow: 2px 2px 3px #999;
+            }
+            
+            .my-float{
+                margin-top:22px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 52px;
+
+            }
+        </style>
+    <head>
+    <body>
+        <div class="header">
+            <b style="float:left"><a href="/{{ users["username"] }}/home" formaction="/{{ users["username"] }}/home" formmethod='GET'>WELCOME {{ users["first_name"] }},</a></b><b style="float:right"><a href="/{{ users["username"] }}/search" formaction="/{{ users["username"] }}/search" formmethod='GET'>SEARCH</a> | <a href="/{{ users["username"] }}/my_profile" formaction='/{{ users["username"] }}/my_profile' formmethod='GET'>MY PROFILE</a> | <a href='/' formaction='/' formmethod='GET'>LOG OUT</a></b>
+        </div>
+        <div class="user_info">
+            <div class="container-items" name="profile_pic"><img src="images\dummy-profile-pic.png" alt="Profile Pic"></div>
+            <div class="container-items" name="total_posts">
+                <p align="center"><b>Total Posts</b>
+                <p align="center"><b>{{ total_posts }}</b>
+            </div>
+            <div class="container-items" name="followers">
+                <p align="center"><b>Following</b>
+                <p align="center"><b>{{ total_followers }}</b>
+            </div>
+            <div class="container-items" name="following">
+                <p align="center"><b>Followers</b>
+                <p align="center"><b>{{ total_following }}</b>
+            </div>
+        </div>
+        <hr>
+        <p align="center"><b>MY POSTS :</b> 
+        <br><br>
+        <div class="posts">
+            {% for post in posts %}
+                <div class="post">
+                    <p style="font-size:16px" align="Right"><a href="/{{ users["username"] }}/update/{{ post["post_id"] }}" formaction="/{{ users["username"] }}/update/{{ post["post_id"] }}" formmethod="GET">UPDATE</a> | <a href="/{{ users["username"] }}/delete/{{ post["post_id"] }}" formaction="/{{ users["username"] }}/delete/{{ post["post_id"] }}" formmethod="GET">DELETE </a></p>
+                    <b>{{ post["title"] }}</b>
+                    <br>
+                    <p font-size="30px">{{ post["description"] }}</p>
+                    <p style="font-size:16px" align="right">{{ post["datetime"] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="/{{ users["username"] }}/new_post" class="float" >
+            <i class="my-float">+</i>
+        </a>
+    </body>
+</html>

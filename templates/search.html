@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Search</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <style>
+            .header{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+                background-color:aliceblue;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: 10px;
+                margin-bottom: 5px;
+                border: 3px solid;
+                border-radius: 6px;
+                padding: 50px;
+            }
+            body{
+                background-color:#66CCFF;
+            }
+            a:link {
+                color: black;
+                text-decoration: none;
+            }
+            a:visited {
+                color: black;
+                text-decoration: none;
+            }
+            a:active {
+                color: black;
+                text-decoration: none;
+            }
+            a:hover {
+                color: red;
+                text-decoration: underline;
+            }
+            .container{
+                padding-left: 100px;
+                padding-right: 100px;
+                padding-top: 40px;
+                padding-bottom: 50px;
+                border: 3px solid;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                background-color:aliceblue;
+                border-radius: 20px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+                align-content: center;
+            } 
+            .header-contents{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+                text-align: center;
+            }
+            input[type="text"],[type="password"],[type="search"]{
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+            }
+            button{
+                width: 30%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+                justify-content: space-between;
+                text-align: center;
+            }
+        </style>
+    <head>
+    <body>
+        <div class="header">
+            <b style="float:left"><a href="/{{ users["username"] }}/home" formaction="/{{ users["username"] }}/home" formmethod='GET'>WELCOME {{ users["first_name"] }},</a></b><b style="float:right"><a href="/{{ users["username"] }}/search" formaction="/{{ users["username"] }}/search" formmethod='GET'>SEARCH</a> | <a href="/{{ users["username"] }}/my_profile" formaction="/{{ users["username"] }}/my_profile" formmethod="GET">MY PROFILE</a> | <a href='/' formaction='/' formmethod='GET'>LOG OUT</a></b>
+        </div>
+        <br>
+        <div class="container">
+            <form action="/{{ users["username"] }}/search" method='POST'>
+                <input type="search" name="search" placeholder="Type a username" required>
+                <button type='submit' align='middle'>Search</button>
+            </form>
+        </div>
+    </body>
+</html>

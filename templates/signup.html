@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registration</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <style>
+            .header{
+                font-family: Garamond, serif;
+                font-size: 90px;
+                text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
+                background-color:#66CCFF;
+                text-align: center;
+                margin-left: 350px;
+                margin-right: 350px;
+                margin-top: 50px;
+                margin-bottom: 5px;
+            }
+            body{
+                background-color:#66CCFF;
+            }
+            .container{
+                padding-left: 100px;
+                padding-right: 100px;
+                padding-top: 40px;
+                padding-bottom: 50px;
+                border: 3px solid;
+                margin-left: 300px;
+                margin-right: 300px;
+                margin-top: 15px;
+                margin-bottom: 20px;
+                background-color:aliceblue;
+                border-radius: 20px;
+
+            } 
+            .header-contents{
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+                text-align: center;
+            }
+            input[type="text"],[type="password"],[type="date"],[type="email"]{
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+            }
+            button{
+                width: 30%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                margin-left: 50px;
+                box-sizing: border-box;
+                justify-content: space-between;
+            }
+            .button{
+                margin-left: 120px;
+            }
+        </style>
+    <head>
+    <body>
+        <div class="header">
+            <b>BLOG LITE</b>
+        </div>
+        <br>
+        <div class="container">
+            <div class="header-contents">
+                Registration
+            </div>
+            <hr><br>
+            <div>
+                <form action="/registration" method="POST">
+                    <div id="fname">
+                        <input type="text" name="fname" placeholder="Enter First Name" align="middle" required>
+                    </div>
+                    <br>
+                    <div id="lname">
+                        <input type="text" name="lname" placeholder="Enter Last Name" align="middle">
+                    </div>
+                    <br>
+                    <div id="email">
+                        <input type="email" name="email" placeholder="Enter Email ID" align="middle" required>
+                    </div>
+                    <br>
+                    <div id="uname">
+                        <input type="text" name="uname" placeholder="Enter Username" align="middle" required>
+                    </div>
+                    <br>
+                    <div id="pass">
+                        <input type="password" name="pass" placeholder="Enter Password" align="middle" required>
+                    </div>
+                    <br>
+                    <div id="dob">
+                        <input type="date" name="dob" placeholder="Enter Date of Birth" align="middle" required>
+                    </div>
+                    <div id="submit-button" class="button">
+                        <a href="login.html">
+                            <button class="b2" type="submit" value="sign up" >Sign up</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
